@@ -1,0 +1,52 @@
+关于dva路由的原理；
+首先路由有两种方案 ，一种是有#号的，一种是没有#号的
+有#号的其实是指有锚点的
+https://developer.mozilla.org/zh-CN/docs/Web/API/History_API
+
+http://iwenwiki.com/ 有关hook'的入门文档
+
+
+UI components UI组件放在components下
+与路由相关的组件放在routes里边
+
+
+如何定义models？
+
+增加了命名空间，
+创建完了之后，如何去读取和操作呢？
+则需要通过connect进行连接.
+
+dva如何路由跳转？
+components下的Product.jsx文件里不能直接使用 this.props.history的原因是什么？
+    <Router history={history}>
+那是因为这个页面没有直接被Router包裹，被包裹的页面只是routes/ProductPage/ProductPage
+一是可以从被包裹的页面传history过去，但是太深的页面根本不好操作
+二是通过原生的widthRouter方法,withRouter是一个高阶函数
+import {Link,withRouter} from 'dva/router'
+三是this.props.dispatch(routerRedux.push("/"))
+
+网络mock请求数据？也可以使用mockjs.com
+
+dva网络请求
+
+dva的model的其他APi
+
+// 3. Model，大型的应用不可能会存在很多的model，如何解决？
+app.model(require('./models/example').default);
+app.model(require('./models/product').default);
+
+推荐一个插件redux-actions
+redux-actions 的用法,优点是可以把所有的action都写在同一个问价，统一处理
+https://www.npmjs.com/package/redux-actions
+
+
+
+
+
+
+
+
+
+
+
+
